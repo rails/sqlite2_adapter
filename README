@@ -1,0 +1,20 @@
+Rails 3 removes the deprecated SQLite 2 adapter. We strongly recommend that you upgrade to SQLite 3 or higher. However, if that's not possible due to the unexplainable reasons, then this plugin should do the job.
+
+Install
+=======
+
+* Install the plugin :
+
+    $ script/plugin install git://github.com/rails/sqlite2_adapter.git
+
+* Load the database adapter from your environment.rb
+
+    Rails::Initializer.run do |config|
+      .....
+
+      Rails::Initializer.default.add :initialize_sqlite2, :before => :initialize_database do
+        require 'active_record/connection_adapters/sqlite2_adapter'
+      end
+    end
+
+That's it.
